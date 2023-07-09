@@ -56,13 +56,34 @@ if [ ! -d "llm-playground" ]; then
 #   cd llm-playground && git pull && cd ..
 fi
 
+# update h2ogpt
+cd $WORKSPACE
+if [ ! -d "h2ogpt-update" ]; then
+  git clone https://github.com/h2oai/h2ogpt.git h2ogpt-update
+# don't update between run yet
+# else
+#   cd h2ogpt-update && git pull && cd ..
+fi
+cp -r h2ogpt-update/* h2ogpt
+cd h2ogpt
+# but don't install yet
+# pip install -e .
+
+cd /content/
+if [ ! -d "h2ogpt" ]; then
+  git clone https://github.com/h2oai/h2ogpt.git
+# don't update between run yet
+# else
+#   cd h2ogpt && git pull && cd ..
+fi
+
 cd $WORKSPACE
 
 # don't update peft
 # PEFT_COMMIT_HASH=${PEFT_COMMIT_HASH:-"main"}
 # pip install git+https://github.com/huggingface/peft.git@$PEFT_COMMIT_HASH
 
-JUPYTER_PASSWORD=${JUPYTER_PASSWORD:-"axolotl"}
+JUPYTER_PASSWORD=${JUPYTER_PASSWORD:-"ernest"}
 
 echo "Launching Jupyter Lab with nohup..."
 cd /
