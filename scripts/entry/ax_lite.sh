@@ -57,7 +57,7 @@ if [ ! -d "llm-playground" ]; then
 fi
 
 # update h2ogpt
-cd $WORKSPACE
+cd /content/
 if [ ! -d "h2ogpt-update" ]; then
   git clone https://github.com/h2oai/h2ogpt.git h2ogpt-update
 # don't update between run yet
